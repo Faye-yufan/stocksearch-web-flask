@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Stock Search</title>
+    <link rel="stylesheet" href="./static/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto&display=swap" rel="stylesheet">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='index.js') }}"></script>
+    <script src="https://code.highcharts.com/stock/highstock.js"></script>
+    <script src="https://code.highcharts.com/stock/modules/data.js"></script>
+    <script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/stock/modules/export-data.js"></script>
+</head>
+
+<body>
+    <div>
+        <form method="post">
+            <label for="stockSearch">Stock Search</label>
+            <div>
+                <input type="submit" value="" class="search-bar-btn search">
+                <input type="text" class="form-control" name="stockTiker" placeholder="Enter Stock Tiker Symbol" id="stockTiker" autocomplete="off" value="" required>
+                <div id="clear-bg">
+                    <div id="clear-mask">
+                        <button class="clear clear-bar-btn" id="clear"></button>
+                    </div>
+
+                </div>
+
+            </div>
+        </form>
+    </div>
+
+
+    <div id="success" class="success-parent">
+        <div id="NavBar" style="display:none;">
+            <ul class="NavBar-ul">
+                <li class="NavBar-li"><a href="#company" id="company">Company</a></li>
+                <li class="NavBar-li"><a href="#stockSummary" id="stockSummary">Stock Summary</a></li>
+                <li class="NavBar-li"><a href="#charts" id="charts">Charts</a></li>
+                <li class="NavBar-li"><a href="#latestNews" id="latestNews">Latest News</a></li>
+            </ul>
+        </div>
+        <div id="company-tables">
+            <div id="logoDiv" style="display:none;"></div>
+            <div class="company-table-wrapper">
+                <table>
+                    <tbody id="info-table"></tbody>
+                    <tbody id="summary-table"></tbody>
+                </table>
+                <table id="rec-trend-tb" style="display:none;">
+                    <tr>
+                        <td class="rec-box red-font">Strong Sell</td>
+                        <td class="rec-box strong-red" id="strongSell"></td>
+                        <td class="rec-box maroon" id="mediumSell"></td>
+                        <td class="rec-box dark-green" id="hold"></td>
+                        <td class="rec-box green" id="mediumBuy"></td>
+                        <td class="rec-box neon-green" id="strongBuy"></td>
+                        <td class="rec-box green-font">Strong Buy</td>
+                    </tr>
+                    <tr id="rec-annotation">
+                        <td class="rec-box"></td>
+                        <td colspan="5">Recommendation Trends</td>
+                        <td class="rec-box"></td>
+                    </tr>
+                </table>
+            </div>
+
+        </div>
+
+        <div id="chart-container" style="height: 400px; min-width: 310px"></div>
+
+        <div id="news-container">
+            <ul class="stockNews-ul">
+                <li class="stockNews-li" id="news-1">
+                    <!-- <img src="/w3images/workshop.jpg" alt="Image" class="left-pic" style="width:50px">
+                  <span class="w3-large">Lorem</span><br>
+                  <span>Sed mattis nunc</span> -->
+                </li>
+                <li class="stockNews-li" id="news-2">
+
+                </li>
+                <li class="stockNews-li" id="news-3">
+
+                </li>
+                <li class="stockNews-li" id="news-4">
+
+                </li>
+                <li class="stockNews-li" id="news-5">
+
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div id="errorAlert" class="alert alert-danger" role="alert" style="display:none;"></div>
+
+</body>
+
+</html>
